@@ -34,7 +34,6 @@ const SuperCheckbox: React.FC<SuperCheckboxPropsType> = (
       }else if(onChange) {
           onChange(e)
       }
-
     }
 
     const finalInputClassName = s.checkbox

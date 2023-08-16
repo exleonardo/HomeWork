@@ -32,7 +32,7 @@
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 600;
-    line-height: 1.25rem; /* 142.857% */
+    line-height: 1.25rem;
 
 }
 
@@ -82,7 +82,6 @@
     font-weight: 600;
     line-height: 1.25rem;
 }
-
 
 .default:active {
     border-radius: 0.1875rem;
