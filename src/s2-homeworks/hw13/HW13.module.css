@@ -5,6 +5,8 @@
 }
 
 .imageContainer {
+    display: flex;
+    justify-content: center;
 }
 
 .image {
@@ -14,6 +16,9 @@
 }
 
 .code {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
 }
 
 .text {
