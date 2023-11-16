@@ -1,6 +1,6 @@
-import React from 'react'
+import React , {ChangeEvent , SyntheticEvent} from 'react'
 import SuperSelect from '../../../hw07/common/c5-SuperSelect/SuperSelect'
-import {Pagination} from '@mui/material'
+import Pagination from '@mui/material/Pagination'
 import s from './SuperPagination.module.css'
 
 export type SuperPaginationPropsType = {
@@ -16,14 +16,32 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
         page, itemsCountForPage, totalCount, onChange, id = 'hw15',
     }
 ) => {
-    const lastPage = 10 // пишет студент // вычислить количество страниц
+    const lastPage = Math.floor(totalCount/itemsCountForPage ) // пишет студент // вычислить количество страниц
+  console.log (itemsCountForPage)
+    const onChangeCallback = (event:any, page: number) => {
+      // onChangeSelect(page)
+      // onChangeSelect(page)
 
-    const onChangeCallback = (event: any, page: number) => {
+onChange(page,itemsCountForPage)
+      // onChange(page)
         // пишет студент
+      console.log (page)
+      // onChange(e, page)
+      // onChange(pages,event.target.innerText)
+
+      // console.log (event.target.innerText)
     }
 
-    const onChangeSelect = (event: any) => {
-        // пишет студент
+    const onChangeSelect = (event: number) => {
+      onChange(page,event)
+      console.log (event)
+        // пишет студентChangeEventHandler
+      // console.log (event)
+      // onChange(totalCount, page)
+      // onChangeCallback(page,pagesElement)
+
+      // console.log (page,event)
+      // onChange(page,event)
     }
 
     return (
@@ -33,6 +51,7 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
                 sx={{
                     // стили для Pagination // пишет студент
                 }}
+                variant="outlined" shape="rounded"
                 page={page}
                 count={lastPage}
                 onChange={onChangeCallback}
@@ -52,7 +71,7 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
                     {id: 7, value: 7},
                     {id: 10, value: 10},
                 ]}
-                onChange={onChangeSelect}
+                onChangeOption={onChangeSelect}
             />
 
             <span className={s.text2}>

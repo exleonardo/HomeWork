@@ -33,7 +33,7 @@
     content: "";
     width: 10px;
     position: absolute; /* Абсолютное позиционирование */
-    left: 480px;
+    left: 31.5rem;
     bottom: 16px; /* Положение треугольника */
     border: 20px solid transparent; border-bottom: 20px solid #0066CC;
     z-index: -1;

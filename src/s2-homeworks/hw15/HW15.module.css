@@ -1,13 +1,15 @@
 .tech {
-    width: 50vw;
+    width: 50%;
 }
 
 .developer {
-
+    display: flex;
+    justify-content: flex-end;
 }
 
 .techHeader {
-    width: 50vw;
+    width: 50%;
+    font-weight: bold;
 }
 
 .developerHeader {
@@ -16,12 +18,39 @@
 
 .row {
     display: flex;
+    padding: 10px;
+
+}
+.row:not(:last-child){
+    border-bottom: 2px solid rgba(236, 243, 243, 0.88);
 }
 
 .rowHeader {
+    margin-top: 1rem;
     display: flex;
+    font-weight: bold;
+    background:  #E5E5E5;
+    padding: 10px;
 }
 
 .loading {
-
+    display: flex;
+    position: absolute;
+    left: 0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(3px);
+    z-index: 1;
 }
+
+
+
+
+
+
+
+
+
+
+

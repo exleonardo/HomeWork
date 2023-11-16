@@ -7,12 +7,14 @@
 }
 
 .hw {
-    width: 600px;
+    position: relative;
+    width: 39rem;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
     -23px 0 20px -23px rgba(0, 0, 0, .8),
     23px 0 20px -23px rgba(0, 0, 0, .8),
     0 0 40px rgba(0, 0, 0, .1) inset;
     padding: 10px;
+    margin-bottom: 2rem;
 }
 
 .hwTitle {
@@ -21,3 +23,5 @@ text-align: center;
 #hw1{
 
 }
+
+/*{position:'relative',top:'30%',left:'45%'}*/

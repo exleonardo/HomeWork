@@ -1,9 +1,12 @@
 .loader {
+    overflow-clip-margin: content-box;
+    overflow: hidden;
     font-size: 10px;
     width: 11em;
     height: 11em;
     border-radius: 50%;
     background: linear-gradient(to right, #7256b8 10%, rgba(174,128,183, 0) 42%);
+
     position: relative;
     animation: load3 1.4s infinite linear;
     transform: translateZ(0);
@@ -16,9 +19,11 @@
     top: 0;
     left: 0;
     content: '';
+    z-index: 2;
+
 }
 .loader:after {
-    background: #ffffff;
+    background: #FFFFFF;
     width: 85%;
     height: 85%;
     border-radius: 50%;
@@ -29,6 +34,7 @@
     left: 0;
     bottom: 0;
     right: 0;
+    z-index: 2;
 }
 @-webkit-keyframes load3 {
     0% {
@@ -47,3 +53,8 @@
         transform: rotate(360deg);
     }
 }
+
+
+
+
+

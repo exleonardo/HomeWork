@@ -5,6 +5,8 @@ import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
+import {Loader} from "../hw10/Loader";
+import {CircularProgress} from "@mui/material";
 
 /*
 * 1 - дописать SuperPagination
@@ -52,22 +54,28 @@ const HW15 = () => {
         getTechs(params)
             .then((res) => {
                 // делает студент
-
+                setLoading(false)
                 // сохранить пришедшие данные
+                setTechs (res?.data.techs?res?.data.techs:[])
+                console.log (res)
+                setTotalCount(res?.data.totalCount?res?.data.totalCount:1)
 
                 //
             })
+
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
-
+        console.log ('New Page:', newPage,'New Count:',newCount)
         // setPage(
+        setPage(newPage)
         // setCount(
-
+        setCount(newCount)
         // sendQuery(
+        sendQuery({page: newPage, count: newCount})
         // setSearchParams(
-
+        setSearchParams()
         //
     }
 
@@ -76,15 +84,16 @@ const HW15 = () => {
 
         // setSort(
         // setPage(1) // при сортировке сбрасывать на 1 страницу
-
+        setPage(1)
         // sendQuery(
         // setSearchParams(
-
+        setSearchParams()
         //
     }
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
+        console.log (params)
         sendQuery({page: params.page, count: params.count})
         setPage(+params.page || 1)
         setCount(+params.count || 4)
@@ -107,7 +116,8 @@ const HW15 = () => {
             <div className={s2.hwTitle}>Homework #15</div>
 
             <div className={s2.hw}>
-                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+                {idLoading && <div id={'hw15-loading'} className={s.loading}>
+                    <CircularProgress size={70} style={{margin:'auto'}} /></div>}
 
                 <SuperPagination
                     page={page}
