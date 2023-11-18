@@ -80,12 +80,15 @@ const HW15 = () => {
         // делает студент
         // setSort(
         setSort(newSort)
+        console.log (sort)
+        console.log (newSort)
         // setPage(1) // при сортировке сбрасывать на 1 страницу
         setPage(1)
         // sendQuery(
-        sendQuery({ sort: newSort})
+        sendQuery({ sort:newSort,page,count})
+        // sendQuery({sort})
         // setSearchParams(
-        setSearchParams(sort)
+        setSearchParams(newSort)
         //
     }
 
@@ -132,7 +135,7 @@ const HW15 = () => {
 
                     <div className={s.developerHeader}>
                         developer
-                        <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
+                        <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
                     </div>
                 </div>
 
