@@ -52,6 +52,7 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
+                console.log (res)
                 // делает студент
                 setLoading(false)
                 // сохранить пришедшие данные
@@ -82,7 +83,7 @@ const HW15 = () => {
         // setPage(1) // при сортировке сбрасывать на 1 страницу
         setPage(1)
         // sendQuery(
-        sendQuery(newSort)
+        sendQuery({ sort: newSort})
         // setSearchParams(
         setSearchParams(sort)
         //
@@ -126,12 +127,12 @@ const HW15 = () => {
                 <div className={s.rowHeader}>
                     <div className={s.techHeader}>
                         tech
-                        <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                        <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
                     </div>
 
                     <div className={s.developerHeader}>
                         developer
-                        <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
+                        <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
                     </div>
                 </div>
 
