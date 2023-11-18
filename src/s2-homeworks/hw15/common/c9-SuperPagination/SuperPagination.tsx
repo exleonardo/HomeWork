@@ -1,15 +1,19 @@
-import React , {ChangeEvent , SyntheticEvent} from 'react'
+import React from 'react'
 import SuperSelect from '../../../hw07/common/c5-SuperSelect/SuperSelect'
 import Pagination from '@mui/material/Pagination'
 import s from './SuperPagination.module.css'
+import {createTheme} from '@mui/material/styles';
+import {ThemeProvider} from "@mui/material";
+
 
 export type SuperPaginationPropsType = {
     id?: string
     page: number
     itemsCountForPage: number
     totalCount: number
-    onChange: (page: number, count: number) => void
+    onChange: (page: number, count: number) => void;
 }
+
 
 const SuperPagination: React.FC<SuperPaginationPropsType> = (
     {
@@ -17,46 +21,51 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
     }
 ) => {
     const lastPage = Math.floor(totalCount/itemsCountForPage ) // пишет студент // вычислить количество страниц
-  console.log (itemsCountForPage)
     const onChangeCallback = (event:any, page: number) => {
-      // onChangeSelect(page)
-      // onChangeSelect(page)
-
-onChange(page,itemsCountForPage)
-      // onChange(page)
-        // пишет студент
-      console.log (page)
-      // onChange(e, page)
-      // onChange(pages,event.target.innerText)
-
-      // console.log (event.target.innerText)
+    onChange(page,itemsCountForPage)
     }
 
     const onChangeSelect = (event: number) => {
       onChange(page,event)
-      console.log (event)
-        // пишет студентChangeEventHandler
-      // console.log (event)
-      // onChange(totalCount, page)
-      // onChangeCallback(page,pagesElement)
-
-      // console.log (page,event)
-      // onChange(page,event)
     }
+  const theme = createTheme({
+    components: {
+      MuiPaginationItem:{
+        styleOverrides: {
+          root: ({ ownerState }) => ({
+            ...(
+              ownerState.page === page && {
+                ":nth-of-type(1)":{
+                              backgroundColor:"#0066CC",
+                               color:'white',
+                            },
+                ":nth-of-type(1):hover":{
+                              backgroundColor:"#0066CC",
+                               color:'white',
+                            },
+              }),
+          }),
+        },
+      }
+    },
+  });
+
 
     return (
+      <ThemeProvider theme={theme}>
         <div className={s.pagination}>
+
             <Pagination
                 id={id + '-pagination'}
-                sx={{
-                    // стили для Pagination // пишет студент
-                }}
+                sx={{}}
                 variant="outlined" shape="rounded"
                 page={page}
                 count={lastPage}
                 onChange={onChangeCallback}
                 hideNextButton
                 hidePrevButton
+
+
             />
 
             <span className={s.text1}>
@@ -72,13 +81,41 @@ onChange(page,itemsCountForPage)
                     {id: 10, value: 10},
                 ]}
                 onChangeOption={onChangeSelect}
+               className={s.select}
             />
 
             <span className={s.text2}>
                 строк в таблице
             </span>
         </div>
+
+
+      </ThemeProvider>
     )
 }
 
 export default SuperPagination
+
+
+
+
+// function ColorShowcase({ color }: {  color: string }) {
+//   return (
+//     <Stack gap={1} alignItems="center">
+//           <Pagination sx={{ bgcolor: `${color}.light` }} variant="outlined" shape="rounded"
+//                        />
+//           <Pagination sx={{ bgcolor: `${color}.main`}} variant="outlined" shape="rounded"
+//                      />
+//           <Pagination sx={{ bgcolor: `${color}.dark` }} variant="outlined" shape="rounded"
+//                        />
+//     </Stack>
+//   );
+// }
+//
+// export default function TonalOffset() {
+//   return (
+//       <ThemeProvider theme={defaultTonalOffsetTheme}>
+//         <ColorShowcase color="primary" />
+//       </ThemeProvider>
+//   );
+// }

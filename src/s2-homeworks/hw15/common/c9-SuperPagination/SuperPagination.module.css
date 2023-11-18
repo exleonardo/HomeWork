@@ -9,3 +9,12 @@
 .text2 {
 
 }
+
+.select{
+    width: 3rem;
+    text-align: center;
+    margin:  0 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

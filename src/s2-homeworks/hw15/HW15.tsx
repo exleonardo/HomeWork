@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React , {useEffect , useState} from 'react'
 import s2 from '../../s1-main/App.module.css'
 import s from './HW15.module.css'
 import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
-import {Loader} from "../hw10/Loader";
 import {CircularProgress} from "@mui/material";
 
 /*
@@ -57,9 +56,7 @@ const HW15 = () => {
                 setLoading(false)
                 // сохранить пришедшие данные
                 setTechs (res?.data.techs?res?.data.techs:[])
-                console.log (res)
                 setTotalCount(res?.data.totalCount?res?.data.totalCount:1)
-
                 //
             })
 
@@ -67,7 +64,6 @@ const HW15 = () => {
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
-        console.log ('New Page:', newPage,'New Count:',newCount)
         // setPage(
         setPage(newPage)
         // setCount(
@@ -75,25 +71,25 @@ const HW15 = () => {
         // sendQuery(
         sendQuery({page: newPage, count: newCount})
         // setSearchParams(
-        setSearchParams()
+        setSearchParams(sort)
         //
     }
 
     const onChangeSort = (newSort: string) => {
         // делает студент
-
         // setSort(
+        setSort(newSort)
         // setPage(1) // при сортировке сбрасывать на 1 страницу
         setPage(1)
         // sendQuery(
+        sendQuery(newSort)
         // setSearchParams(
-        setSearchParams()
+        setSearchParams(sort)
         //
     }
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        console.log (params)
         sendQuery({page: params.page, count: params.count})
         setPage(+params.page || 1)
         setCount(+params.count || 4)
@@ -125,6 +121,7 @@ const HW15 = () => {
                     totalCount={totalCount}
                     onChange={onChangePagination}
                 />
+
 
                 <div className={s.rowHeader}>
                     <div className={s.techHeader}>
