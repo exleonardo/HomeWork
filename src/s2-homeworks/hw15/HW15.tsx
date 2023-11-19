@@ -80,8 +80,6 @@ const HW15 = () => {
         // делает студент
         // setSort(
         setSort(newSort)
-        console.log (sort)
-        console.log (newSort)
         // setPage(1) // при сортировке сбрасывать на 1 страницу
         setPage(1)
         // sendQuery(
